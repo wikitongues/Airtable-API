@@ -2,6 +2,11 @@ var Airtable = require('airtable');
 var fs = require('fs');
 require('dotenv').config();
 
+var dir = './dump';
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
+
 var base = new Airtable({apiKey: process.env.APIKEY}).base(process.env.BASE);
 
 base('🍩 Oral Histories').select({
@@ -31,8 +36,26 @@ base('🍩 Oral Histories').select({
     // This function (`page`) will get called for each page of records.
 
     records.forEach(function(record) {
-        const stringifedJSON = JSON.stringify(record);
-        fs.writeFileSync(`dump/${record.get('IDv2')}/${record.get('IDv2')}__metadata.json`, stringifedJSON);
+        const content = [`Metadata for ${record.get('IDv2')}
+
+Oral History ID:  ${record.get('IDv2')}
+Languages by ISO 639-3 Code: ${record.get('Languages by ISO Code')}
+Language Names: ${record.get('Languages Used')}
+Alternate Names: ${record.get('Alternate Name')}
+Speakers: ${record.get('Speakers')}
+
+Video Description: ${record.get('Video Description')}
+
+Original Submitter: ${record.get('Source')}
+Licenses: ${record.get('Licenses')}
+Video Nation: ${record.get('Video Nation')}
+Video Territory: ${record.get('Video Territory')}
+
+Published to Youtube on: ${record.get('Youtube Publish Schedule')}
+Wikimedia Status: ${record.get('Wikimedia Status')}
+Wiki Commons URL: ${record.get('Wiki Commons URL')}`]
+
+        fs.writeFileSync(`dump/${record.get('IDv2')}__metadata.txt`, content);
         console.log('wrote', record.get('IDv2'));
     });
 
