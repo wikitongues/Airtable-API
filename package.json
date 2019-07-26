@@ -1,0 +1,24 @@
+{
+  "name": "airtable-api",
+  "version": "1.0.0",
+  "description": "Airtable integration to create Wikitongues oral history metadata files",
+  "main": "airtable.js",
+  "dependencies": {
+    "airtable": "^0.7.0",
+    "dotenv": "^8.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wikitongues/Airtable-API.git"
+  },
+  "author": "Kamille Johnson, Freddie Andrade, Airtable",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wikitongues/Airtable-API/issues"
+  },
+  "homepage": "https://github.com/wikitongues/Airtable-API#readme"
+}
