@@ -23,7 +23,7 @@ Run app with
 ```bash
 npm start
 ```
-App will start at [localhost:3000](https://localhost:3000)
+App will start at [localhost:3000](http://localhost:3000)
 
 
 Run airtable.js script from directory root with
