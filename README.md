@@ -1,4 +1,32 @@
 # Airtable-API
+
 Crud functionality for Airtable
-To run app, run `npm start`. App will start at [localhost:3000](localhost:3000)
-To run airtable.js, run `node airtable.js` from root.
+
+
+## Config
+
+Install dependencies with
+```bash
+npm Install
+```
+
+Setup your `.env` file
+```bash
+printf "APIKEY=<Your API Key>\nBASE=<Your Base Key>" > .env
+```
+
+Update your new `.env` with your api key and your base key. You can find them here: [https://airtable.com/api](https://airtable.com/api).
+
+## Run
+
+Run app with 
+```bash
+npm start
+```
+App will start at [localhost:3000](localhost:3000)
+
+
+Run airtable.js script from directory root with
+```bash
+node airtable.js
+```
