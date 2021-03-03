@@ -9,7 +9,7 @@ if (!fs.existsSync(dir)){
 
 var base = new Airtable({apiKey: process.env.APIKEY}).base(process.env.BASE);
 
-base('🍩 Oral Histories').select({
+base('Oral Histories').select({
     // Selecting the first 3 records in Worksheet:
     // maxRecords: 3,
     view: ".LOCMetadataView",
@@ -17,46 +17,44 @@ base('🍩 Oral Histories').select({
     timeZone: "America/New_York",
     userLocale: "en-ca",
     fields: [
-      "IDv2",
-      "Languages by ISO Code",
-      "Languages Used",
-      "Alternate Name",
-      "Speakers",
+      "Identifier",
+      "Languages: ISO Code (639-3)",
+      "Languages: Speaker preferred names",
+      "Contributor: Speakers",
       ".self?",
-      "Source",
-      "Video Nation",
-      "Video Territory",
-      "Video Description",
-      "Licenses",
-      "Youtube Publish Schedule",
-      "Wikimedia Status",
-      "Wiki Commons URL"
+      "Contributor: Videographer",
+      "Coverage: Video Nation",
+      "Coverage: Video Territory",
+      "Description",
+      "video_license",
+      "Youtube Publish Date",
+      "Wikimedia Eligibility",
+      "wikimedia_commons_link"
     ]
 }).eachPage(function page(records, fetchNextPage) {
     // This function (`page`) will get called for each page of records.
 
     records.forEach(function(record) {
-        const content = [`Metadata for ${record.get('IDv2')}
+        const content = [`Metadata for ${record.get('Identifier')}
 
-Oral History ID:  ${record.get('IDv2')}
-Languages by ISO 639-3 Code: ${record.get('Languages by ISO Code')}
-Language Names: ${record.get('Languages Used')}
-Alternate Names: ${record.get('Alternate Name')}
-Speakers: ${record.get('Speakers')}
+Oral History ID:  ${record.get('Identifier')}
+Languages by ISO 639-3 Code: ${record.get('Languages: ISO Code (639-3)')}
+Language Names: ${record.get('Languages: Speaker preferred names')}
+Speakers: ${record.get('Contributor: Speakers')}
 
-Video Description: ${record.get('Video Description')}
+Video Description: ${record.get('Description')}
 
-Original Submitter: ${record.get('Source')}
-Licenses: ${record.get('Licenses')}
-Video Nation: ${record.get('Video Nation')}
-Video Territory: ${record.get('Video Territory')}
+Original Submitter: ${record.get('Contributor: Videographer')}
+video_license: ${record.get('video_license')}
+Coverage: Video Nation: ${record.get('Coverage: Video Nation')}
+Coverage: Video Territory: ${record.get('Coverage: Video Territory')}
 
-Published to Youtube on: ${record.get('Youtube Publish Schedule')}
-Wikimedia Status: ${record.get('Wikimedia Status')}
-Wiki Commons URL: ${record.get('Wiki Commons URL')}`]
+Published to Youtube on: ${record.get('Youtube Publish Date')}
+Wikimedia Eligibility: ${record.get('Wikimedia Eligibility')}
+wikimedia_commons_link: ${record.get('wikimedia_commons_link')}`]
 
-        fs.writeFileSync(`dump/${record.get('IDv2')}__metadata.txt`, content);
-        console.log('wrote', record.get('IDv2'));
+        fs.writeFileSync(`dump/${record.get('Identifier')}__metadata.txt`, content);
+        console.log('wrote', record.get('Identifier'));
     });
 
     // To fetch the next page of records, call `fetchNextPage`.
