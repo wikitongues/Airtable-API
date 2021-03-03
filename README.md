@@ -26,7 +26,11 @@ npm start
 App will start at [localhost:3000](http://localhost:3000)
 
 
-Run airtable.js script from directory root with
+
+### airtable.js
+Dumps desired metadata for all oral histories into a /dump directory
+> Run airtable.js script from directory root with
+
 ```bash
 node airtable.js
 ```

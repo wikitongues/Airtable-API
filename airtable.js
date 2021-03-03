@@ -1,3 +1,5 @@
+// Dumps desired metadata for all oral histories into a /dump directory
+
 var Airtable = require('airtable');
 var fs = require('fs');
 require('dotenv').config();
