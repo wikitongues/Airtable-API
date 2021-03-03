@@ -3,5 +3,5 @@ var port = process.env.PORT || 3000;
 const app = require('./app');
 
 var listener = app.listen(port, function () {
-  console.log('Your app is listening on localhost:' + listener.address().port);
+  console.log('Your app is listening on http://localhost:' + listener.address().port);
 });
